@@ -1,3 +1,4 @@
+import { Review } from './Review'
 export interface Product {
   id: number;
   title: string;
@@ -19,13 +20,7 @@ export interface Product {
   warrantyInformation: string;
   shippingInformation: string;
   availabilityStatus: string;
-  reviews: {
-    rating: number;
-    comment: string;
-    date: string;
-    reviewerName: string;
-    reviewerEmail: string;
-  }[];
+  reviews: Review[];
   returnPolicy: string;
   minimumOrderQuantity: number;
   meta: {
