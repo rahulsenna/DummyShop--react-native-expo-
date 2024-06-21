@@ -8,21 +8,20 @@ export default function HomeLayout() {
   return (
     <Stack
       screenOptions={{
-
-        headerShown: false,
+        // headerShown: false,
       }}>
       <Stack.Screen
-        name="ProductList"
+        name="index"
         options={{
           title: 'Home',
         }}
       />
-      {/* <Stack.Screen
+      <Stack.Screen
         name="ProductDetails/[id]"
         options={{
-          title: 'Explorer',
+          headerShown: false
         }}
-      /> */}
+      />
     </Stack>
   );
 }
