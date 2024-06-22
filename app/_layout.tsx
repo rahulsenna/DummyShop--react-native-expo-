@@ -19,6 +19,7 @@ export function ErrorBoundary(props: ErrorBoundaryProps) {
     </View>
   );
 }
+import { SessionProvider } from './ctx';
 
 export default function RootLayout() {
   const colorScheme = useColorScheme();
@@ -37,11 +38,15 @@ export default function RootLayout() {
   }
 
   return (
+    <SessionProvider>
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
+      <Stack
+        initialRouteName='(tabs)/(home)'
+      >
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
         <Stack.Screen name="+not-found" />
       </Stack>
     </ThemeProvider>
+    </SessionProvider>
   );
 }

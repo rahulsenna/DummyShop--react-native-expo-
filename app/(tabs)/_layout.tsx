@@ -15,6 +15,9 @@ export function ErrorBoundary(props: ErrorBoundaryProps) {
   );
 }
 
+export const unstable_settings = {
+  initialRouteName: '(home)/index',
+};
 export default function TabLayout() {
   const colorScheme = useColorScheme();
 
@@ -34,11 +37,21 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
+        name="(auth)"
+        options={{
+          title: 'You',
+          tabBarIcon: ({ color, focused }) => (
+            <TabBarIcon name={focused ? 'person' : 'person-outline'} color={color} />
+          ),
+        }}
+      />
+
+      <Tabs.Screen
         name="settings"
         options={{
-          title: 'Setting',
+          title: 'Settings',
           tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'code-slash' : 'code-slash-outline'} color={color} />
+            <TabBarIcon name={focused ? 'settings' : 'settings-outline'} color={color} />
           ),
         }}
       />
