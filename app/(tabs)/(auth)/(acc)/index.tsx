@@ -21,10 +21,6 @@ const UserProfile: React.FC = () => {
 
   const { signOut, session } = useSession();
 
-  useEffect(() => {
-    if (!session)
-      router.replace('/login')
-  }, [session]);
   
   useEffect(() => {
     const fetchUserData = async () => {
@@ -51,6 +47,7 @@ const UserProfile: React.FC = () => {
   }
 
   if (!user) {
+    signOut();
     return (
       <View style={styles.container}>
         <Text style={styles.errorText}>Failed to load user data</Text>

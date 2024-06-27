@@ -10,10 +10,6 @@ const LoginPage: React.FC = () => {
 
   const { signIn, session } = useSession();
 
-  useEffect(() => {
-    if (session)
-      router.replace('/profile')
-  }, [session]);
 
   const loginValidationSchema = Yup.object().shape({
     username: Yup.string()
@@ -26,7 +22,9 @@ const LoginPage: React.FC = () => {
   const handleLogin = async (values: { username: string; password: string }) => {
     try {
       const { token } = await login(values.username, values.password);
-      signIn(token);
+      await signIn(token);
+      router.replace('(auth)');
+
     } catch (error: any) {
       Alert.alert(error.response?.data?.error || 'Login failed');
       console.error(error.response?.data?.error || 'Login failed');
@@ -77,7 +75,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     padding: 20,
-    backgroundColor: '#f5f5f5',
+    backgroundColor: '#FF0000',
   },
   title: {
     fontSize: 32,

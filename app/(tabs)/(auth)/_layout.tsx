@@ -1,30 +1,20 @@
-import { Redirect, Stack } from "expo-router";
-import { Text } from "react-native";
-import { useSession } from "@/app/ctx";
+import { Stack } from 'expo-router';
 
-// export const unstable_settings = {initialRouteName: 'profile',};
+export const unstable_settings = {
+  initialRouteName: '(acc)',
+};
 
-const AuthLayout = () => {
-
-    const { session, isLoading } = useSession();
-    // You can keep the splash screen open, or render a loading screen like we do here.
-    if (isLoading) {
-        return <Text>Loading...</Text>;
-    }
-
+export default function AuthLayout() {
     return (
         <Stack>
-            {session == null ? (
-                <>
-                    <Stack.Screen name="login" options={{ title: "Login", presentation: 'modal', }} />
-                </>
-            ) : (
-                <>
-                    <Stack.Screen name="profile" options={{ title: "Account" }} />
-                </>
-            )}
+            <Stack.Screen name="(acc)" options={{ title: "Profile" }} />
+            <Stack.Screen
+                name="login"
+                options={{
+                    presentation: 'modal',
+                    title: "Login"
+                }}
+            />
         </Stack>
     );
 }
-
-export default AuthLayout;
